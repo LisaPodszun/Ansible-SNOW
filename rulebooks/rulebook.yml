@@ -20,3 +20,8 @@
               create_vm_vm_owner: "{{ event.payload.vm_owner }}"
               create_vm_vm_deployment: "{{ event.payload.vm_deployment }}"
               create_vm_vm_environment: "{{ event.payload.vm_environment }}"
+              create_vm_vm_purpose: "demo"
+              vm_blueprint: "rhel9"
+              create_vm_aws_vpc_subnet_name: "aws-test-subnet"
+              create_vm_aws_securitygroup_name: "aws-test-sg"
+              create_vm_aws_keypair_name: "aws-test-key"
