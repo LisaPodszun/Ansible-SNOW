@@ -9,7 +9,7 @@
   rules:
 
     - name: New record created and debug
-      condition: event.sys_id is defined
+      condition: true 
       action: 
         run_job_template:
           name: "Cloud | AWS | Create VM"
