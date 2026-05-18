@@ -8,7 +8,7 @@
         port: 5003
   rules:
     - name: New record created and debug
-      condition: event is defined
+      condition: event.payload is defined
       action: 
         run_job_template:
           name: "Cloud | AWS | Create VM"
