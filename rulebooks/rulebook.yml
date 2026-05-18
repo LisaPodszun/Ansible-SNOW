@@ -10,7 +10,6 @@
     - name: New record created and debug
       condition: event.payload is defined
       action: 
-        debug:
         run_job_template:
           name: "Cloud | AWS | Create VM"
           organization: "Ansible Product Demos (APD)"
