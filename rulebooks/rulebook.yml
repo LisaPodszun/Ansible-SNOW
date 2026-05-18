@@ -1,15 +1,14 @@
 ---
 - name: Generic new poll for new records in ServiceNow
   hosts: all
-  sources: 
-    - name: Watch for any updated table
-      servicenow.itsm.records:
-        table: sc_request
-        interval: 5
+  
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5003
   rules:
-
     - name: New record created and debug
-      condition: true 
+      condition: event is defined
       action: 
         run_job_template:
           name: "Cloud | AWS | Create VM"
