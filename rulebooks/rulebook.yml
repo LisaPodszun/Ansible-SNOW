@@ -11,13 +11,13 @@
       condition: event.payload is defined
       action: 
         debug:
-        #run_job_template:
-        #  name: "Cloud | AWS | Create VM"
-        #  organization: "Ansible Product Demos (APD)"
-        #  job_args:
-        #    extra_vars:
-        #      create_vm_aws_region: "{{ event.payload.aws_region }}"
-        #      create_vm_vm_name: "{{ event.payload.vm_name }}"
-        #      create_vm_vm_owner: "{{ event.payload.vm_owner }}"
-        #      create_vm_vm_deployment: "{{ event.payload.vm_deployment }}"
-        #      create_vm_vm_environment: "{{ event.payload.vm_environment }}"
+        run_job_template:
+          name: "Cloud | AWS | Create VM"
+          organization: "Ansible Product Demos (APD)"
+          job_args:
+            extra_vars:
+              create_vm_aws_region: "{{ event.payload.aws_region }}"
+              create_vm_vm_name: "{{ event.payload.vm_name }}"
+              create_vm_vm_owner: "{{ event.payload.vm_owner }}"
+              create_vm_vm_deployment: "{{ event.payload.vm_deployment }}"
+              create_vm_vm_environment: "{{ event.payload.vm_environment }}"
