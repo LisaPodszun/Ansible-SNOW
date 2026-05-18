@@ -9,19 +9,35 @@
   rules:
     - name: New record created and debug
       condition: event.payload is defined
-      action: 
-        run_job_template:
-          name: "Cloud | AWS | Create VM"
-          organization: "Ansible Product Demos (APD)"
-          job_args:
-            extra_vars:
-              create_vm_aws_region: "{{ event.payload.aws_region }}"
-              create_vm_vm_name: "{{ event.payload.vm_name }}"
-              create_vm_vm_owner: "{{ event.payload.vm_owner }}"
-              create_vm_vm_deployment: "{{ event.payload.vm_deployment }}"
-              create_vm_vm_environment: "{{ event.payload.vm_environment }}"
-              create_vm_vm_purpose: "demo"
-              vm_blueprint: "rhel9"
-              create_vm_aws_vpc_subnet_name: "aws-test-subnet"
-              create_vm_aws_securitygroup_name: "aws-test-sg"
-              create_vm_aws_keypair_name: "aws-test-key"
+      actions: 
+        #- run_job_template:
+        #    name: "Cloud | AWS | Create VM"
+        #    organization: "Ansible Product Demos (APD)"
+        #    job_args:
+        #      extra_vars:
+        #        create_vm_aws_region: "{{ event.payload.aws_region }}"
+        #        create_vm_vm_name: "{{ event.payload.vm_name }}"
+        #        create_vm_vm_owner: "{{ event.payload.vm_owner }}"
+        #        create_vm_vm_deployment: "{{ event.payload.vm_deployment }}"
+        #        create_vm_vm_environment: "{{ event.payload.vm_environment }}"
+        #        create_vm_vm_purpose: "demo"
+        #        vm_blueprint: "rhel9"
+        #        create_vm_aws_vpc_subnet_name: "aws-test-subnet"
+        #        create_vm_aws_securitygroup_name: "aws-test-sg"
+        #        create_vm_aws_keypair_name: "aws-test-key"
+        - run_workflow_template:
+            name: "Create VM and Sync"
+            organization: "Ansible Product Demos (APD)"
+            workflow_args:
+              extra_vars:
+                create_vm_aws_region: "{{ event.payload.aws_region }}"
+                create_vm_vm_name: "{{ event.payload.vm_name }}"
+                create_vm_vm_owner: "{{ event.payload.vm_owner }}"
+                create_vm_vm_deployment: "{{ event.payload.vm_deployment }}"
+                create_vm_vm_environment: "{{ event.payload.vm_environment }}"
+                create_vm_vm_purpose: "demo"
+                vm_blueprint: "rhel9"
+                create_vm_aws_vpc_subnet_name: "aws-test-subnet"
+                create_vm_aws_securitygroup_name: "aws-test-sg"
+                create_vm_aws_keypair_name: "aws-test-key"
+
