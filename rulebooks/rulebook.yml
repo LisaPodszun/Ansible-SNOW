@@ -7,7 +7,7 @@
         host: 0.0.0.0
         port: 5003
   rules:
-    - name: New record created and debug
+    - name: Create New VM
       condition: event.payload is defined
       actions: 
         #- run_job_template:
@@ -28,7 +28,7 @@
         - run_workflow_template:
             name: "Create VM and Sync"
             organization: "Ansible Product Demos (APD)"
-            workflow_args:
+            job_args:
               extra_vars:
                 create_vm_aws_region: "{{ event.payload.aws_region }}"
                 create_vm_vm_name: "{{ event.payload.vm_name }}"
